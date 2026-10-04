@@ -1,0 +1,1358 @@
+{
+	"schemaVersion": 1,
+	"publicationNote": "Public redacted copy: <USER_HOME>, <HOST>, <LAB> and <LAB_ALIAS> replace identifying environment values. Historical report hashes and file:line references describe the original pre-redaction evidence, not these published bytes; statuses and recorded test outcomes are unchanged.",
+	"kind": "sanitized selected evidence; not full transcripts",
+	"status": "PARTIAL_PASS_CHILD_NOT_EXERCISED",
+	"lab": "<LAB>",
+	"sourceSha": "3df8f9d4287591de85aa8c056ee77a74501f3054",
+	"model": "openai-codex/gpt-5.6-luna",
+	"provenance": {
+		"agents-guard": {
+			"path": "<LAB>/source",
+			"version": "0.1.0",
+			"peerDependencies": {},
+			"entry": ["./src/index.ts"],
+			"files": {
+				"package.json": "e34e50f81086d1abdc4c094ae34d28eda4626ab8d7ba921da69bd15439565fb2",
+				"package-lock.json": "01812e132fee06c41757bfe863511cc03e37a84f4bb6389a1144e6028c61918c",
+				"src/index.ts": "0762c79d0a7661e545e95a217ef63cc7f8a2b83e65651fa24051d74c06778351"
+			}
+		},
+		"pi-guard": {
+			"path": "<LAB>/home/.pi/agent/npm/node_modules/pi-guard",
+			"version": "1.4.0",
+			"peerDependencies": {
+				"@earendil-works/pi-coding-agent": "0.79.1",
+				"typebox": "1.1.39"
+			},
+			"entry": ["./src/index.ts"],
+			"files": {
+				"package.json": "072e9fcc9e111959df0802e5b33e5fe96dd0ce9c4e58cd91f89b36376d171ec5",
+				"src/index.ts": "2baec384d426c3ca964465c608027f8e67ca7be39b8020304d140708eb2790ae",
+				"src/handlers.ts": "434a9f6a35972d297e18592d44274ae3d9be7940f333524a3990fd0016a371f8",
+				"src/config.ts": "19d5dd4e794247af6ae3a452c284bef730b6236e1aaf6db1f519fefdb0baea9f",
+				"src/defaults.ts": "356ac7d4277aeec6f282f4638ae481fd07873056362cc093cb67752d9a6f16e3",
+				"src/matching.ts": "9b147e9fafbd86f1c8a37a9f85ec4e48bd33ec0c7cfdfb8842dacb269c8ade72"
+			},
+			"npm": {
+				"version": "1.4.0",
+				"resolved": "https://registry.npmjs.org/pi-guard/-/pi-guard-1.4.0.tgz",
+				"integrity": "sha512-COj5RqwTd5Pq7VojxH6EVjgVxPZpinudAzil6cW1yzvRyjvVGRrbQg2GqkvUlyP3H/e5bDZmS2pJlwahr+iQOA=="
+			}
+		},
+		"pi-subagents": {
+			"path": "<LAB>/home/.pi/agent/npm/node_modules/pi-subagents",
+			"version": "0.67.0",
+			"peerDependencies": {
+				"@earendil-works/pi-agent-core": "*",
+				"@earendil-works/pi-ai": ">=0.80.0",
+				"@earendil-works/pi-coding-agent": "*",
+				"@earendil-works/pi-tui": "*"
+			},
+			"entry": ["./index.ts"],
+			"files": {
+				"package.json": "00b5ffcd328f4cf4004ed45cfce44e21f91802fbe7861218b2103b2db6ae864e",
+				"index.ts": "a2f11dbe8e200bd8c590441316a9c6ab222318d2aa738670dedcf0e72592dde3",
+				"docs/configuration.md": "b41d0fd81c5180a1772b471b9fa7693860fbb09c7e644254ca4af678847192e3",
+				"docs/agents.md": "e38cec029581f65725249002b330775a2b4a3380cfeb1ad318a4e7f4dafb8996",
+				"docs/models.md": "5e2b66aad76b53a3cf7827f82ed90fcab32e3524e24f5506e8acd902c4f82843"
+			},
+			"npm": {
+				"version": "0.67.0",
+				"resolved": "https://registry.npmjs.org/pi-subagents/-/pi-subagents-0.67.0.tgz",
+				"integrity": "sha512-43FGBi82sbxEGhEfsaj0P7I/rRJfsw1UPuFSVSkjZw0Fy92lrBIB9d3gDTpwmK5hLj3ZzZUnvtlqiKQatySCTw=="
+			}
+		},
+		"host": {
+			"pi": "0.85.1",
+			"node": "v22.23.2",
+			"npm": "10.9.8",
+			"platform": "Darwin",
+			"machine": "arm64"
+		},
+		"managedInstallPeerPolicy": "Pi 0.85.1 package manager supplies --legacy-peer-deps; operator supplied no force/peer overrides. This does not certify declared peer compatibility.",
+		"resolvedTypebox": "1.1.38"
+	},
+	"settings": {
+		"packages": [
+			"../../../probe",
+			"../../../source",
+			"npm:pi-guard@1.4.0",
+			"npm:pi-subagents@0.67.0"
+		],
+		"defaultProvider": "openai-codex",
+		"defaultModel": "gpt-5.6-luna",
+		"defaultThinkingLevel": "low",
+		"transport": "sse",
+		"retry": {
+			"enabled": false,
+			"maxRetries": 0
+		},
+		"compaction": {
+			"enabled": false
+		},
+		"guard": {
+			"enabled": true,
+			"rules": {
+				"bash": {
+					"git add .": "ask"
+				},
+				"write": {
+					"*": "deny",
+					"allowed-parent.txt": "allow",
+					"<LAB>/repo/allowed-parent.txt": "allow",
+					"ask-parent.txt": "ask",
+					"<LAB>/repo/ask-parent.txt": "ask",
+					"child.txt": "allow",
+					"<LAB>/repo/child.txt": "allow",
+					"ask-child.txt": "ask",
+					"<LAB>/repo/ask-child.txt": "ask",
+					"deny-child.txt": "deny",
+					"<LAB>/repo/deny-child.txt": "deny"
+				},
+				"subagent": "allow"
+			}
+		},
+		"subagents": {
+			"disableBuiltins": true,
+			"defaultModel": "openai-codex/gpt-5.6-luna",
+			"defaultThinking": "low",
+			"defaultExtensions": [],
+			"modelScope": {
+				"enforce": true,
+				"strict": true,
+				"allow": ["openai-codex/gpt-5.6-luna"]
+			}
+		}
+	},
+	"negativeControl": {
+		"state": {
+			"model": {
+				"id": "gpt-5.6-luna",
+				"name": "GPT-5.6 Luna",
+				"api": "openai-codex-responses",
+				"provider": "openai-codex",
+				"baseUrl": "https://chatgpt.com/backend-api",
+				"reasoning": true,
+				"input": ["text", "image"],
+				"cost": {
+					"input": 0.2,
+					"output": 1.2,
+					"cacheRead": 0.02,
+					"cacheWrite": 0.25,
+					"tiers": [
+						{
+							"inputTokensAbove": 272000,
+							"input": 0.4,
+							"output": 1.8,
+							"cacheRead": 0.04,
+							"cacheWrite": 0.5
+						}
+					]
+				},
+				"contextWindow": 272000,
+				"maxTokens": 128000,
+				"thinkingLevelMap": {
+					"xhigh": "xhigh",
+					"max": "max",
+					"minimal": "low"
+				},
+				"compat": {
+					"supportsOpenAIGrammarTools": true,
+					"supportsAdditionalTools": true,
+					"supportsToolSearch": true
+				}
+			},
+			"thinkingLevel": "low",
+			"isStreaming": false,
+			"isCompacting": false,
+			"steeringMode": "one-at-a-time",
+			"followUpMode": "one-at-a-time",
+			"sessionFile": "<LAB>/sessions/2026-09-11T03-30-56-588Z_01a08e84-b3cb-7539-b171-b626ac9da5a5.jsonl",
+			"sessionId": "01a08e84-b3cb-7539-b171-b626ac9da5a5",
+			"autoCompactionEnabled": false,
+			"messageCount": 0,
+			"pendingMessageCount": 0
+		},
+		"commands": {
+			"commands": [
+				{
+					"name": "llama",
+					"description": "Manage llama.cpp router models",
+					"source": "extension",
+					"sourceInfo": {
+						"path": "<inline:llama.cpp>",
+						"source": "inline",
+						"scope": "temporary",
+						"origin": "top-level"
+					}
+				}
+			]
+		},
+		"stats": {
+			"sessionFile": "<LAB>/sessions/2026-09-11T03-30-56-588Z_01a08e84-b3cb-7539-b171-b626ac9da5a5.jsonl",
+			"sessionId": "01a08e84-b3cb-7539-b171-b626ac9da5a5",
+			"userMessages": 0,
+			"assistantMessages": 0,
+			"toolCalls": 0,
+			"toolResults": 0,
+			"totalMessages": 0,
+			"tokens": {
+				"input": 0,
+				"output": 0,
+				"cacheRead": 0,
+				"cacheWrite": 0,
+				"total": 0
+			},
+			"cost": 0,
+			"contextUsage": {
+				"tokens": 0,
+				"contextWindow": 272000,
+				"percent": 0
+			}
+		},
+		"presence": {}
+	},
+	"preflight": {
+		"state": {
+			"model": {
+				"id": "gpt-5.6-luna",
+				"name": "GPT-5.6 Luna",
+				"api": "openai-codex-responses",
+				"provider": "openai-codex",
+				"baseUrl": "https://chatgpt.com/backend-api",
+				"reasoning": true,
+				"input": ["text", "image"],
+				"cost": {
+					"input": 0.2,
+					"output": 1.2,
+					"cacheRead": 0.02,
+					"cacheWrite": 0.25,
+					"tiers": [
+						{
+							"inputTokensAbove": 272000,
+							"input": 0.4,
+							"output": 1.8,
+							"cacheRead": 0.04,
+							"cacheWrite": 0.5
+						}
+					]
+				},
+				"contextWindow": 272000,
+				"maxTokens": 128000,
+				"thinkingLevelMap": {
+					"xhigh": "xhigh",
+					"max": "max",
+					"minimal": "low"
+				},
+				"compat": {
+					"supportsOpenAIGrammarTools": true,
+					"supportsAdditionalTools": true,
+					"supportsToolSearch": true
+				}
+			},
+			"thinkingLevel": "low",
+			"isStreaming": false,
+			"isCompacting": false,
+			"steeringMode": "one-at-a-time",
+			"followUpMode": "one-at-a-time",
+			"sessionFile": "<LAB>/sessions/2026-09-11T03-36-11-383Z_01a08e89-8177-774f-990a-b447d4d853f2.jsonl",
+			"sessionId": "01a08e89-8177-774f-990a-b447d4d853f2",
+			"autoCompactionEnabled": false,
+			"messageCount": 0,
+			"pendingMessageCount": 0
+		},
+		"commands": {
+			"stack-probe": {
+				"name": "stack-probe",
+				"description": "Disposable acceptance provenance snapshot",
+				"source": "extension",
+				"sourceInfo": {
+					"path": "<LAB>/probe/index.mjs",
+					"source": "../../../probe",
+					"scope": "user",
+					"origin": "package",
+					"baseDir": "<LAB>/probe"
+				}
+			},
+			"agents-guard": {
+				"name": "agents-guard",
+				"description": "Inspect or toggle agents-guard modules",
+				"source": "extension",
+				"sourceInfo": {
+					"path": "<LAB>/source/src/index.ts",
+					"source": "../../../source",
+					"scope": "user",
+					"origin": "package",
+					"baseDir": "<LAB>/source"
+				}
+			},
+			"guard": {
+				"name": "guard",
+				"description": "Manage pi-guard security settings",
+				"source": "extension",
+				"sourceInfo": {
+					"path": "<LAB>/home/.pi/agent/npm/node_modules/pi-guard/src/index.ts",
+					"source": "npm:pi-guard@1.4.0",
+					"scope": "user",
+					"origin": "package",
+					"baseDir": "<LAB>/home/.pi/agent/npm/node_modules/pi-guard"
+				}
+			}
+		},
+		"status": "agents-guard: enabled (source: default)\n  hard-deny: enabled (source: default)\n  subagent-policy: enabled (source: default)\n  writer-lock: enabled (source: default)\n  git-evidence: enabled (source: file)\n  completion-diff-recheck: enabled (source: file)\nagents-guard/writer-lock: advisory（不鎖定寫入）\nworktree: <LAB>/repo；main\n本次工作樹檢查未見未提交變更。\n本次未觀察到其他參與記錄。\n僅供提醒，不是互斥鎖。\n檢查時間：1789097775327\nwriter-lock 的 blockedTools／blockedGitSubcommands 已 deprecated，僅保留設定相容，不作阻擋。\n[stack-probe] snapshot recorded",
+		"presence": {
+			"presence/6cc264993195e5a925486e3a4dff6624d01bf5a812d2faa5385fcb7a4e6f4edd/c6f43dbd-633a-4166-967c-5abd18f073b2.json": {
+				"version": 1,
+				"instanceId": "c6f43dbd-633a-4166-967c-5abd18f073b2",
+				"sessionId": "01a08e89-8177-774f-990a-b447d4d853f2",
+				"host": "<HOST>",
+				"pid": 19544,
+				"worktreeRoot": "<LAB>/repo",
+				"startedAt": 1789097775229,
+				"lastSeenAt": 1789097775327
+			}
+		}
+	},
+	"parent": {
+		"status": "PASS",
+		"calls": [
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097782070,
+				"child": false,
+				"phase": "parent",
+				"toolName": "bash",
+				"toolCallId": "call_4ro6cYKYth7I3YwfDIZRA5LU|fc_06c11802569d2e79016aa377334f1487d09026c9c06c95040b",
+				"input": {
+					"command": "git add ."
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097784752,
+				"child": false,
+				"phase": "parent",
+				"toolName": "write",
+				"toolCallId": "call_R8y0Ow66rCQfNv5HLAznp3Y6|fc_06c11802569d2e79016aa37738fa7887d09894e6af558872fb",
+				"input": {
+					"path": "allowed-parent.txt",
+					"content": "PARENT_OK\n"
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097786988,
+				"child": false,
+				"phase": "parent",
+				"toolName": "write",
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"input": {
+					"path": "ask-parent.txt",
+					"content": "ASK_PARENT\n"
+				},
+				"envelopeAllowed": true
+			}
+		],
+		"results": [
+			{
+				"type": "tool_execution_end",
+				"toolCallId": "call_4ro6cYKYth7I3YwfDIZRA5LU|fc_06c11802569d2e79016aa377334f1487d09026c9c06c95040b",
+				"toolName": "bash",
+				"result": {
+					"content": [
+						{
+							"type": "text",
+							"text": "[agents-guard/hard-deny] 已阻擋：命令命中 hard-deny 清單\n  命令=git add .  命中規則=git add .\n  這是 AGENTS.md 的 MUST 級防線，不提供單次放行選項。\n  若確實需要此操作，請由操作者手動執行，或調整 agents-guard 的 hardDeny 設定。"
+						}
+					],
+					"details": {}
+				},
+				"isError": true
+			},
+			{
+				"type": "tool_execution_end",
+				"toolCallId": "call_R8y0Ow66rCQfNv5HLAznp3Y6|fc_06c11802569d2e79016aa37738fa7887d09894e6af558872fb",
+				"toolName": "write",
+				"result": {
+					"content": [
+						{
+							"type": "text",
+							"text": "Successfully wrote to allowed-parent.txt"
+						}
+					]
+				},
+				"isError": false
+			},
+			{
+				"type": "tool_execution_end",
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"toolName": "write",
+				"result": {
+					"content": [
+						{
+							"type": "text",
+							"text": "[Blocked by pi-guard: User rejected this invocation]"
+						}
+					],
+					"details": {}
+				},
+				"isError": true
+			}
+		],
+		"dialogs": [
+			{
+				"type": "extension_ui_request",
+				"id": "12b7efdd-eab6-4f16-855b-9d09fb014800",
+				"method": "select",
+				"title": "⚠️ Write Permission Required\n\nask-parent.txt",
+				"options": ["Allow", "Always allow write (this session)", "Reject"]
+			}
+		],
+		"allowReadback": "PARENT_OK\n",
+		"askFileAbsent": true,
+		"indexAbsent": true
+	},
+	"capabilities": {
+		"name": "final-child",
+		"description": "One bounded disposable fixture operation sequence",
+		"source": "user",
+		"executable": true,
+		"runner": {
+			"type": "pi"
+		},
+		"tools": {
+			"ambient": false,
+			"names": ["write"],
+			"mcpDirectTools": []
+		},
+		"model": {
+			"value": "openai-codex/gpt-5.6-luna",
+			"thinking": "low"
+		},
+		"execution": {
+			"timeoutMs": 120000
+		},
+		"extensions": {
+			"names": [
+				"<LAB>/probe/index.mjs",
+				"<LAB>/source/src/index.ts",
+				"<LAB>/home/.pi/agent/npm/node_modules/pi-guard/src/index.ts"
+			]
+		}
+	},
+	"child": {
+		"status": "NOT_EXERCISED",
+		"launchAttempt": "BLOCKED_BY_ACCEPTANCE_ENVELOPE",
+		"nativeWorkflowId": null,
+		"nativeChildId": null,
+		"childPid": null,
+		"actualCall": {
+			"type": "tool_call",
+			"pid": 19544,
+			"time": 1789097804539,
+			"child": false,
+			"phase": "launch",
+			"toolName": "subagent",
+			"toolCallId": "call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de",
+			"input": {
+				"workflowScript": "const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;",
+				"async": true,
+				"mission": false,
+				"globalConcurrencyLimit": 1,
+				"maxSubagentSpawnsPerRun": 1
+			},
+			"envelopeAllowed": false
+		},
+		"expectedInput": {
+			"workflowScript": "const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\\\"path\\\":\\\"child.txt\\\",\\\"content\\\":\\\"CHILD_OK\\\\n\\\"}; {\\\"path\\\":\\\"ask-child.txt\\\",\\\"content\\\":\\\"ASK_CHILD\\\\n\\\"}; {\\\"path\\\":\\\"deny-child.txt\\\",\\\"content\\\":\\\"DENY_CHILD\\\\n\\\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;",
+			"async": true,
+			"mission": false,
+			"globalConcurrencyLimit": 1,
+			"maxSubagentSpawnsPerRun": 1
+		},
+		"blockedToolResult": {
+			"role": "toolResult",
+			"toolCallId": "call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de",
+			"toolName": "subagent",
+			"content": [
+				{
+					"type": "text",
+					"text": "[stack-envelope] Outside the exact single-use fixture scope; stop without retry."
+				}
+			],
+			"details": {},
+			"isError": true,
+			"timestamp": 1789097804540
+		},
+		"expectedScriptSyntaxExit": 0,
+		"actualScriptSyntaxExit": 1,
+		"actualScriptSyntaxError": "<LAB>/actual-workflow.js:2\nconst child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;\n                                                                                                                                                                                                                  ^^^^\n\nSyntaxError: Unexpected identifier 'path'\n    at wrapSafe (node:internal/modules/cjs/loader:1713:18)\n    at checkSyntax (node:internal/main/check_syntax:78:3)\n\nNode.js v22.23.2\n",
+		"difference": [
+			"--- expected workflowScript\n",
+			"+++ model-emitted workflowScript\n",
+			"@@ -1 +1 @@\n",
+			"-const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\\\"path\\\":\\\"child.txt\\\",\\\"content\\\":\\\"CHILD_OK\\\\n\\\"}; {\\\"path\\\":\\\"ask-child.txt\\\",\\\"content\\\":\\\"ASK_CHILD\\\\n\\\"}; {\\\"path\\\":\\\"deny-child.txt\\\",\\\"content\\\":\\\"DENY_CHILD\\\\n\\\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;",
+			"+const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;"
+		],
+		"driverFailure": {
+			"type": "AssertionError",
+			"message": "[{'type': 'tool_call', 'pid': 19544, 'time': 1789097804539, 'child': False, 'phase': 'launch', 'toolName': 'subagent', 'toolCallId': 'call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de', 'input': {'workflowScript': 'const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;', 'async': True, 'mission': False, 'globalConcurrencyLimit': 1, 'maxSubagentSpawnsPerRun': 1}, 'envelopeAllowed': False}]",
+			"traceback": "Traceback (most recent call last):\n  File \"<LAB>/stack.py\", line 45, in <module>\n    check_calls('launch',plan['launch']);rs=results(ev);assert len(rs)==1 and not rs[0]['isError'],rs\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<LAB>/stack.py\", line 8, in check_calls\n    assert len(calls)==len(expected) and all(x['envelopeAllowed'] for x in calls),calls\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: [{'type': 'tool_call', 'pid': 19544, 'time': 1789097804539, 'child': False, 'phase': 'launch', 'toolName': 'subagent', 'toolCallId': 'call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de', 'input': {'workflowScript': 'const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;', 'async': True, 'mission': False, 'globalConcurrencyLimit': 1, 'maxSubagentSpawnsPerRun': 1}, 'envelopeAllowed': False}]\n",
+			"replayed": false
+		},
+		"driverExitCode": 1,
+		"replayed": false,
+		"noNativeLaunchOrChildSessionObserved": true
+	},
+	"session": {
+		"id": "01a08e89-8177-774f-990a-b447d4d853f2",
+		"path": "<LAB>/sessions/2026-09-11T03-36-11-383Z_01a08e89-8177-774f-990a-b447d4d853f2.jsonl",
+		"rpcAndPersistedAssistantMessagesEqual": true,
+		"rpcAndPersistedToolResultsEqual": true,
+		"finalRpcStatsAvailable": false,
+		"finalState": {
+			"model": {
+				"id": "gpt-5.6-luna",
+				"name": "GPT-5.6 Luna",
+				"api": "openai-codex-responses",
+				"provider": "openai-codex",
+				"baseUrl": "https://chatgpt.com/backend-api",
+				"reasoning": true,
+				"input": ["text", "image"],
+				"cost": {
+					"input": 0.2,
+					"output": 1.2,
+					"cacheRead": 0.02,
+					"cacheWrite": 0.25,
+					"tiers": [
+						{
+							"inputTokensAbove": 272000,
+							"input": 0.4,
+							"output": 1.8,
+							"cacheRead": 0.04,
+							"cacheWrite": 0.5
+						}
+					]
+				},
+				"contextWindow": 272000,
+				"maxTokens": 128000,
+				"thinkingLevelMap": {
+					"xhigh": "xhigh",
+					"max": "max",
+					"minimal": "low"
+				},
+				"compat": {
+					"supportsOpenAIGrammarTools": true,
+					"supportsAdditionalTools": true,
+					"supportsToolSearch": true
+				}
+			},
+			"thinkingLevel": "low",
+			"isStreaming": false,
+			"isCompacting": false,
+			"steeringMode": "one-at-a-time",
+			"followUpMode": "one-at-a-time",
+			"sessionFile": "<LAB>/sessions/2026-09-11T03-36-11-383Z_01a08e89-8177-774f-990a-b447d4d853f2.jsonl",
+			"sessionId": "01a08e89-8177-774f-990a-b447d4d853f2",
+			"autoCompactionEnabled": false,
+			"messageCount": 18,
+			"pendingMessageCount": 0
+		},
+		"assistantStops": [
+			"toolUse",
+			"toolUse",
+			"toolUse",
+			"stop",
+			"toolUse",
+			"toolUse",
+			"stop",
+			"toolUse",
+			"stop"
+		],
+		"assistantFinalTexts": [
+			"Observed outcomes:\n1. `git add .` — hard-denied.\n2. `allowed-parent.txt` — written successfully.\n3. `ask-parent.txt` — invocation rejected by user/controller.",
+			"Ready. `final-child` is executable native Pi with only `write` and the requested `openai-codex/gpt-5.6-luna` model.",
+			"Workflow launch refused by the stack envelope. No child was launched."
+		],
+		"toolResults": [
+			{
+				"role": "toolResult",
+				"toolCallId": "call_4ro6cYKYth7I3YwfDIZRA5LU|fc_06c11802569d2e79016aa377334f1487d09026c9c06c95040b",
+				"toolName": "bash",
+				"content": [
+					{
+						"type": "text",
+						"text": "[agents-guard/hard-deny] 已阻擋：命令命中 hard-deny 清單\n  命令=git add .  命中規則=git add .\n  這是 AGENTS.md 的 MUST 級防線，不提供單次放行選項。\n  若確實需要此操作，請由操作者手動執行，或調整 agents-guard 的 hardDeny 設定。"
+					}
+				],
+				"details": {},
+				"isError": true,
+				"timestamp": 1789097782073
+			},
+			{
+				"role": "toolResult",
+				"toolCallId": "call_R8y0Ow66rCQfNv5HLAznp3Y6|fc_06c11802569d2e79016aa37738fa7887d09894e6af558872fb",
+				"toolName": "write",
+				"content": [
+					{
+						"type": "text",
+						"text": "Successfully wrote to allowed-parent.txt"
+					}
+				],
+				"isError": false,
+				"timestamp": 1789097784771
+			},
+			{
+				"role": "toolResult",
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"toolName": "write",
+				"content": [
+					{
+						"type": "text",
+						"text": "[Blocked by pi-guard: User rejected this invocation]"
+					}
+				],
+				"details": {},
+				"isError": true,
+				"timestamp": 1789097786999
+			},
+			{
+				"role": "toolResult",
+				"toolCallId": "call_vneFJgGoJJppokVPkdcz1Plc|fc_06c11802569d2e79016aa37740486087d0af90b7cc04faab46",
+				"toolName": "subagent",
+				"content": [
+					{
+						"type": "text",
+						"text": "Executable agents (capabilities):\nUser agents\n- final-child (user, context: fresh): Description: One bounded disposable fixture operation sequence; Tools: write; Model: openai-codex/gpt-5.6-luna; Thinking: low"
+					}
+				],
+				"details": {
+					"mode": "management",
+					"results": [],
+					"agentCapabilities": {
+						"agents": [
+							{
+								"name": "final-child",
+								"description": "One bounded disposable fixture operation sequence",
+								"source": "user",
+								"executable": true,
+								"runner": {
+									"type": "pi"
+								},
+								"tools": {
+									"ambient": false,
+									"names": ["write"],
+									"mcpDirectTools": []
+								},
+								"model": {
+									"value": "openai-codex/gpt-5.6-luna",
+									"thinking": "low"
+								},
+								"execution": {
+									"timeoutMs": 120000
+								},
+								"extensions": {
+									"names": [
+										"<LAB>/probe/index.mjs",
+										"<LAB>/source/src/index.ts",
+										"<LAB>/home/.pi/agent/npm/node_modules/pi-guard/src/index.ts"
+									]
+								}
+							}
+						],
+						"restrictedCount": 0
+					}
+				},
+				"isError": false,
+				"timestamp": 1789097792166
+			},
+			{
+				"role": "toolResult",
+				"toolCallId": "call_PUFoToc4brqZuTBFSICbzPdC|fc_06c11802569d2e79016aa37743cb8887d0801d08faab3f415e",
+				"toolName": "subagent",
+				"content": [
+					{
+						"type": "text",
+						"text": "Subagent model\n\nAgent: final-child\nEffective model:\n  openai-codex/gpt-5.6-luna\nSource: user agent config\nThinking: low\nCurrent session model:\n  openai-codex/gpt-5.6-luna"
+					}
+				],
+				"details": {
+					"mode": "management",
+					"results": []
+				},
+				"isError": false,
+				"timestamp": 1789097795627
+			},
+			{
+				"role": "toolResult",
+				"toolCallId": "call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de",
+				"toolName": "subagent",
+				"content": [
+					{
+						"type": "text",
+						"text": "[stack-envelope] Outside the exact single-use fixture scope; stop without retry."
+					}
+				],
+				"details": {},
+				"isError": true,
+				"timestamp": 1789097804540
+			}
+		],
+		"toolCalls": [
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097782070,
+				"child": false,
+				"phase": "parent",
+				"toolName": "bash",
+				"toolCallId": "call_4ro6cYKYth7I3YwfDIZRA5LU|fc_06c11802569d2e79016aa377334f1487d09026c9c06c95040b",
+				"input": {
+					"command": "git add ."
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097784752,
+				"child": false,
+				"phase": "parent",
+				"toolName": "write",
+				"toolCallId": "call_R8y0Ow66rCQfNv5HLAznp3Y6|fc_06c11802569d2e79016aa37738fa7887d09894e6af558872fb",
+				"input": {
+					"path": "allowed-parent.txt",
+					"content": "PARENT_OK\n"
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097786988,
+				"child": false,
+				"phase": "parent",
+				"toolName": "write",
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"input": {
+					"path": "ask-parent.txt",
+					"content": "ASK_PARENT\n"
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097792124,
+				"child": false,
+				"phase": "discovery",
+				"toolName": "subagent",
+				"toolCallId": "call_vneFJgGoJJppokVPkdcz1Plc|fc_06c11802569d2e79016aa37740486087d0af90b7cc04faab46",
+				"input": {
+					"action": "list",
+					"capabilities": true
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097795618,
+				"child": false,
+				"phase": "discovery",
+				"toolName": "subagent",
+				"toolCallId": "call_PUFoToc4brqZuTBFSICbzPdC|fc_06c11802569d2e79016aa37743cb8887d0801d08faab3f415e",
+				"input": {
+					"action": "models",
+					"agent": "final-child"
+				},
+				"envelopeAllowed": true
+			},
+			{
+				"type": "tool_call",
+				"pid": 19544,
+				"time": 1789097804539,
+				"child": false,
+				"phase": "launch",
+				"toolName": "subagent",
+				"toolCallId": "call_DWszOiDQEZPdirigYmpddOPJ|fc_06c11802569d2e79016aa37748103c87d08e2dc344988ca9de",
+				"input": {
+					"workflowScript": "const child = await runs.run(\"fixture-permissions\", {\"agent\": \"final-child\", \"label\": \"Exercise fixture permission outcomes\", \"task\": \"In the disposable fixture cwd, call write exactly three times, in order: {\"path\":\"child.txt\",\"content\":\"CHILD_OK\\n\"}; {\"path\":\"ask-child.txt\",\"content\":\"ASK_CHILD\\n\"}; {\"path\":\"deny-child.txt\",\"content\":\"DENY_CHILD\\n\"}. The first should succeed. The last two are separate authorized negative probes and should each be refused. Continue from the expected second refusal to the distinct third probe, but never repeat a target, bypass a refusal, or use other tools. Stop on unexpected failure. Report actual outcomes.\", \"cwd\": \"<LAB>/repo\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable three-call smoke; controller verifies actual persisted tool results and filesystem independently; no additional reviewer children.\"}}); return child;",
+					"async": true,
+					"mission": false,
+					"globalConcurrencyLimit": 1,
+					"maxSubagentSpawnsPerRun": 1
+				},
+				"envelopeAllowed": false
+			}
+		]
+	},
+	"totals": {
+		"input": 12367,
+		"output": 629,
+		"cacheRead": 24064,
+		"cacheWrite": 0,
+		"totalTokens": 37060,
+		"sdkEstimatedUsd": 0.00370948,
+		"turns": 9,
+		"toolCalls": 6,
+		"toolErrors": 3,
+		"operatorPrompts": 3,
+		"childTasksStarted": 0
+	},
+	"audit": {
+		"priorReports": {
+			"docs/reports/2026-09-11-discovery-forwarding-evidence.json": "ea39d9449a3fade4b762437a7e3ef4449fcbf8722a92a9707ad3e62b55b216cd",
+			"docs/reports/2026-09-11-discovery-forwarding-results.md": "bd2f63a5b20eecc9cd078e57eedfd25b78bf5f20b0b2b9d23b3f924d22c38eae",
+			"docs/reports/2026-09-11-functional-acceptance-evidence.json": "8b50e3bb5d82a3d20b00dfc0a073f994df7f65b946ec03176dc51f9ce9c63c80",
+			"docs/reports/2026-09-11-functional-acceptance-results.md": "3ba0d2cdc97774a1cd1d80420da6b8905d1b94a232e2bc1a4bfdc9129bef1673",
+			"docs/reports/2026-09-11-integration-acceptance-evidence.json": "4f7df82bacefab028517b655d47220a024c1775735773115f13c9a1ebd597aa5",
+			"docs/reports/2026-09-11-integration-acceptance-results.md": "4087c75183791bb26b72b2179b7c9e595c872113eec779eb234bf6cb093c3729",
+			"docs/reports/2026-09-11-isolated-acceptance-results.md": "351ee9efa7ff53ef71330d71d611530ff2602fbf1c6ab4160d5e3ca8e83865a7",
+			"docs/reports/2026-09-11-model-acceptance-blocked.md": "963b9e1bd6752134ed44d6ccd369cd67cb75d06460c89dc13e67ac78b7cb2015",
+			"docs/reports/2026-09-11-oauth-connection-retry.md": "062e42d215183f1237a14a539fbd9fc6401f736d65933d4c29ee2b28460b91a3",
+			"docs/reports/2026-09-11-permission-forwarding-impact.md": "5b54e36003cfdf69fb489d7bbf7322a2b99252c84a66f28894ef1b19a2f65ec8"
+		},
+		"sourceFilesUnchanged": 87,
+		"sourceArchiveSha256": "fef5221cf4177179aebd3d2f08be5151d13a5b7ded1cfffd14078b3f3cf0dd4e",
+		"lockfileSha256": "01812e132fee06c41757bfe863511cc03e37a84f4bb6389a1144e6028c61918c",
+		"guardStateModes": [
+			{
+				"path": "state/agents-guard",
+				"mode": "0o700"
+			},
+			{
+				"path": "state/agents-guard/config.json",
+				"mode": "0o600"
+			},
+			{
+				"path": "state/agents-guard/presence",
+				"mode": "0o700"
+			},
+			{
+				"path": "state/agents-guard/presence/6cc264993195e5a925486e3a4dff6624d01bf5a812d2faa5385fcb7a4e6f4edd",
+				"mode": "0o700"
+			}
+		],
+		"presence": {},
+		"fixtureStatus": "?? allowed-parent.txt\n",
+		"allowReadback": "PARENT_OK\n",
+		"askAndAllChildFilesAbsent": true,
+		"indexAbsent": true,
+		"rpcCancelResponse": [
+			{
+				"type": "extension_ui_response",
+				"id": "12b7efdd-eab6-4f16-855b-9d09fb014800",
+				"cancelled": true
+			}
+		],
+		"piGuardApprovalEvents": [
+			{
+				"type": "herdr:blocked",
+				"pid": 19544,
+				"time": 1789097786994,
+				"child": false,
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"data": {
+					"active": true,
+					"label": "write approval"
+				}
+			},
+			{
+				"type": "herdr:blocked",
+				"pid": 19544,
+				"time": 1789097786998,
+				"child": false,
+				"toolCallId": "call_YKcaYmNPEZ4zj9OKwqPYc5hd|fc_06c11802569d2e79016aa3773ac8e487d0a732077a588ccc17",
+				"data": {
+					"active": false
+				}
+			}
+		],
+		"originalAuthAndSettingsMetadataUnchanged": true,
+		"authSnapshotRemoved": true,
+		"credentialScanFiles": 936,
+		"credentialMatches": 0,
+		"processRecords": [
+			{
+				"label": "api-doc-search",
+				"pid": 14158,
+				"pgid": 14158,
+				"cwd": "<LAB>/source",
+				"args": ["chub", "search", "earendil pi coding agent", "--json"],
+				"started": 1789097321.633585,
+				"exitCode": 0,
+				"seconds": 1.192,
+				"groupAbsent": true
+			},
+			{
+				"label": "archive",
+				"pid": 11608,
+				"pgid": 11608,
+				"cwd": "<REPO>",
+				"args": [
+					"git",
+					"archive",
+					"--format=tar",
+					"--output",
+					"<LAB>/source.tar",
+					"3df8f9d4287591de85aa8c056ee77a74501f3054"
+				],
+				"started": 1789097076.8342028,
+				"exitCode": 0,
+				"seconds": 0.041,
+				"groupAbsent": true
+			},
+			{
+				"label": "auth-check-help",
+				"pid": 15427,
+				"pgid": 15427,
+				"cwd": "<LAB>/source",
+				"args": ["<USER_HOME>/.npm-global/bin/pi", "auth", "check", "--help"],
+				"started": 1789097487.874861,
+				"exitCode": 0,
+				"seconds": 0.183,
+				"groupAbsent": true
+			},
+			{
+				"label": "auth-check",
+				"pid": 15429,
+				"pgid": 15429,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"auth",
+					"check",
+					"--provider",
+					"openai-codex",
+					"--json",
+					"--no-refresh"
+				],
+				"started": 1789097488.064241,
+				"exitCode": 0,
+				"seconds": 0.228,
+				"groupAbsent": true
+			},
+			{
+				"label": "auth-help",
+				"pid": 15426,
+				"pgid": 15426,
+				"cwd": "<LAB>/source",
+				"args": ["<USER_HOME>/.npm-global/bin/pi", "auth", "--help"],
+				"started": 1789097487.645525,
+				"exitCode": 0,
+				"seconds": 0.228,
+				"groupAbsent": true
+			},
+			{
+				"label": "discovery-disabled",
+				"pid": 15202,
+				"pgid": 15202,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"--offline",
+					"--no-approve",
+					"--no-skills",
+					"--no-prompt-templates",
+					"--no-themes",
+					"--no-context-files",
+					"--session-dir",
+					"<LAB>/sessions",
+					"--provider",
+					"openai-codex",
+					"--model",
+					"gpt-5.6-luna",
+					"--thinking",
+					"low",
+					"--mode",
+					"rpc",
+					"--no-extensions",
+					"--no-tools"
+				],
+				"started": 1789097456.4070752,
+				"exitCode": 0,
+				"seconds": 0.216,
+				"groupAbsent": true
+			},
+			{
+				"label": "envelope-unit",
+				"pid": 15200,
+				"pgid": 15200,
+				"cwd": "<LAB>/source",
+				"args": ["node", "<LAB>/envelope-test.mjs"],
+				"started": 1789097456.324099,
+				"exitCode": 0,
+				"seconds": 0.076,
+				"groupAbsent": true
+			},
+			{
+				"label": "extract",
+				"pid": 11609,
+				"pgid": 11609,
+				"cwd": "<LAB>/source",
+				"args": ["tar", "-xf", "<LAB>/source.tar", "-C", "<LAB>/source"],
+				"started": 1789097076.8756218,
+				"exitCode": 0,
+				"seconds": 0.075,
+				"groupAbsent": true
+			},
+			{
+				"label": "fixture-status",
+				"pid": 22039,
+				"pgid": 22039,
+				"cwd": "<LAB>/repo",
+				"args": ["git", "status", "--porcelain"],
+				"started": 1789098004.966215,
+				"exitCode": 0,
+				"seconds": 0.021,
+				"groupAbsent": true
+			},
+			{
+				"label": "init",
+				"pid": 11640,
+				"pgid": 11640,
+				"cwd": "<LAB>/repo",
+				"args": ["git", "init", "-b", "main"],
+				"started": 1789097080.925364,
+				"exitCode": 0,
+				"seconds": 0.041,
+				"groupAbsent": true
+			},
+			{
+				"label": "install-help",
+				"pid": 11639,
+				"pgid": 11639,
+				"cwd": "<LAB>/source",
+				"args": ["<USER_HOME>/.npm-global/bin/pi", "install", "--help"],
+				"started": 1789097080.68969,
+				"exitCode": 0,
+				"seconds": 0.235,
+				"groupAbsent": true
+			},
+			{
+				"label": "install-pi-guard",
+				"pid": 11642,
+				"pgid": 11642,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"install",
+					"npm:pi-guard@1.4.0",
+					"--no-approve"
+				],
+				"started": 1789097081.203477,
+				"exitCode": 0,
+				"seconds": 1.303,
+				"groupAbsent": true
+			},
+			{
+				"label": "install-subagents",
+				"pid": 11707,
+				"pgid": 11707,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"install",
+					"npm:pi-subagents@0.67.0",
+					"--no-approve"
+				],
+				"started": 1789097082.507621,
+				"exitCode": 0,
+				"seconds": 7.181,
+				"groupAbsent": true
+			},
+			{
+				"label": "node-version",
+				"pid": 14155,
+				"pgid": 14155,
+				"cwd": "<LAB>/source",
+				"args": ["node", "--version"],
+				"started": 1789097321.463688,
+				"exitCode": 0,
+				"seconds": 0.038,
+				"groupAbsent": true
+			},
+			{
+				"label": "npm-version",
+				"pid": 14156,
+				"pgid": 14156,
+				"cwd": "<LAB>/source",
+				"args": ["npm", "--version"],
+				"started": 1789097321.502974,
+				"exitCode": 0,
+				"seconds": 0.129,
+				"groupAbsent": true
+			},
+			{
+				"label": "pi-help",
+				"pid": 11633,
+				"pgid": 11633,
+				"cwd": "<LAB>/source",
+				"args": ["<USER_HOME>/.npm-global/bin/pi", "--help"],
+				"started": 1789097080.400307,
+				"exitCode": 0,
+				"seconds": 0.288,
+				"groupAbsent": true
+			},
+			{
+				"label": "pi-version",
+				"pid": 14154,
+				"pgid": 14154,
+				"cwd": "<LAB>/source",
+				"args": ["<USER_HOME>/.npm-global/bin/pi", "--version"],
+				"started": 1789097321.2339709,
+				"exitCode": 0,
+				"seconds": 0.229,
+				"groupAbsent": true
+			},
+			{
+				"label": "probe-syntax",
+				"pid": 14167,
+				"pgid": 14167,
+				"cwd": "<LAB>/source",
+				"args": ["node", "--check", "<LAB>/probe/index.mjs"],
+				"started": 1789097323.066391,
+				"exitCode": 0,
+				"seconds": 0.041,
+				"groupAbsent": true
+			},
+			{
+				"label": "register-probe",
+				"pid": 14166,
+				"pgid": 14166,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"install",
+					"<LAB>/probe",
+					"--no-approve"
+				],
+				"started": 1789097322.8286982,
+				"exitCode": 0,
+				"seconds": 0.234,
+				"groupAbsent": true
+			},
+			{
+				"label": "register-source",
+				"pid": 11641,
+				"pgid": 11641,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"install",
+					"<LAB>/source",
+					"--no-approve"
+				],
+				"started": 1789097080.967377,
+				"exitCode": 0,
+				"seconds": 0.235,
+				"groupAbsent": true
+			},
+			{
+				"label": "source-install",
+				"pid": 11610,
+				"pgid": 11610,
+				"cwd": "<LAB>/source",
+				"args": ["npm", "ci", "--no-audit", "--no-fund", "--ignore-scripts"],
+				"started": 1789097076.951895,
+				"exitCode": 0,
+				"seconds": 3.448,
+				"groupAbsent": true
+			},
+			{
+				"label": "stack-driver",
+				"pid": 19542,
+				"pgid": 19542,
+				"cwd": "<LAB>",
+				"args": ["python3", "-B", "<LAB>/stack.py"],
+				"started": 1789097771.136953,
+				"exitCode": 1,
+				"seconds": 35.978,
+				"groupAbsent": true
+			},
+			{
+				"label": "stack-parent",
+				"pid": 19544,
+				"pgid": 19544,
+				"cwd": "<LAB>/repo",
+				"args": [
+					"<USER_HOME>/.npm-global/bin/pi",
+					"--offline",
+					"--no-approve",
+					"--no-skills",
+					"--no-prompt-templates",
+					"--no-themes",
+					"--no-context-files",
+					"--session-dir",
+					"<LAB>/sessions",
+					"--provider",
+					"openai-codex",
+					"--model",
+					"gpt-5.6-luna",
+					"--thinking",
+					"low",
+					"--mode",
+					"rpc",
+					"--tools",
+					"bash,write,subagent",
+					"--system-prompt",
+					"You are running a bounded disposable fixture smoke test. Execute only explicitly requested tool calls with exactly the provided arguments. Never retry, change a command, bypass a refusal, or launch additional work. The requested negative probes are separate targets, not retries. After dispatch, return control; native notifications will arrive. On notifications, report briefly without tools. Do not poll, call bg_wait, or claim a refused operation succeeded."
+				],
+				"started": 1789097771.183893,
+				"exitCode": 0,
+				"seconds": 35.905,
+				"groupAbsent": true
+			},
+			{
+				"label": "syntax-actual",
+				"pid": 22034,
+				"pgid": 22034,
+				"cwd": "<LAB>",
+				"args": ["node", "--check", "<LAB>/actual-workflow.js"],
+				"started": 1789098004.6737978,
+				"exitCode": 1,
+				"seconds": 0.041,
+				"groupAbsent": true
+			},
+			{
+				"label": "syntax-expected",
+				"pid": 22033,
+				"pgid": 22033,
+				"cwd": "<LAB>",
+				"args": ["node", "--check", "<LAB>/expected-workflow.js"],
+				"started": 1789098004.630912,
+				"exitCode": 0,
+				"seconds": 0.042,
+				"groupAbsent": true
+			}
+		],
+		"newUnitTypecheckLintRun": false,
+		"newSourceLspRun": false,
+		"nativeChildLaunchCount": 0,
+		"aggregateStatusAndCountMutantsRejected": true,
+		"credentials": {
+			"type": "oauth",
+			"refreshEmpty": true,
+			"snapshotMode": "0o600",
+			"nativeReadiness": {
+				"status": "ready",
+				"provider": "openai-codex",
+				"authType": "oauth"
+			},
+			"snapshotRemoved": true
+		},
+		"agentsGuardConfig": {
+			"version": 1,
+			"modules": {
+				"git-evidence": {
+					"checkCi": false
+				},
+				"completion-diff-recheck": {
+					"followUp": false
+				}
+			}
+		},
+		"cleanup": {
+			"status": "COMPLETE",
+			"removedAt": "2026-09-11T11:47:58+08:00",
+			"removedBytes": 479994157,
+			"lab": "<LAB>",
+			"aliases": ["<LAB>", "<LAB_ALIAS>"],
+			"aliasesAbsent": true,
+			"recordedPidsAndGroupsAbsent": true,
+			"commandReferences": [],
+			"cwdReferences": [],
+			"lsofExitCode": 0,
+			"authSnapshotRemovedBeforeCleanup": true,
+			"presenceEmpty": true,
+			"sourceAndPriorReportsRechecked": true,
+			"repoNodeModulesAbsent": true,
+			"rawLogsSessionsHelpersAndDependenciesRemoved": true,
+			"sharedCachesRemoved": false,
+			"priorReferenceCheck": {
+				"commandReferences": [],
+				"cwdReferences": [],
+				"lsofExitCode": 0,
+				"excludedAncestors": [
+					1, 832, 1340, 27157, 27158, 67686, 67687, 67695, 91783
+				]
+			}
+		},
+		"initialDocumentChecks": {
+			"markdownRendered": true,
+			"tables": 2,
+			"relativeLinks": [
+				"2026-09-11-final-stack-evidence.json",
+				"2026-09-11-permission-forwarding-impact.md"
+			],
+			"jsonAndTotalsValidated": true,
+			"whitespaceAndGitDiffCheck": true,
+			"priorReportsUnchanged": 10,
+			"rendererProcesses": [
+				{
+					"pid": 26385,
+					"exitCode": 0,
+					"groupAbsent": true,
+					"tokens": false
+				},
+				{
+					"pid": 26386,
+					"exitCode": 0,
+					"groupAbsent": true,
+					"tokens": true
+				}
+			],
+			"rendererTempRemoved": true,
+			"lens": {
+				"mode": "all",
+				"issues": 0,
+				"filesDiagnosed": 14,
+				"scope": "session document diagnostics; not source regression"
+			}
+		},
+		"finalDocumentChecks": {
+			"markdownRendered": true,
+			"astTables": 2,
+			"relativeLinks": [
+				"2026-09-11-final-stack-evidence.json",
+				"2026-09-11-permission-forwarding-impact.md"
+			],
+			"jsonTotalsAndFailureStatusesVerified": true,
+			"rendererProcesses": [
+				{
+					"pid": 29021,
+					"exitCode": 0,
+					"groupAbsent": true,
+					"tokens": false
+				},
+				{
+					"pid": 29022,
+					"exitCode": 0,
+					"groupAbsent": true,
+					"tokens": true
+				}
+			],
+			"rendererTempRemoved": true,
+			"priorReportsUnchanged": 10,
+			"headAndTrackedStagedDiffUnchanged": true,
+			"expectedUntrackedFiles": 12,
+			"labAndRecordedProcessesAbsent": true
+		}
+	},
+	"notRun": [
+		"pi-guard child allow/ask/deny runtime",
+		"formal installation or settings change",
+		"product changes",
+		"model retries/replays or D0",
+		"unit/typecheck/lint/source LSP regression",
+		"all third-party tests or security audit",
+		"commit/push/release"
+	]
+}

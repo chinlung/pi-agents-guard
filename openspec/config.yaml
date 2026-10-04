@@ -1,0 +1,43 @@
+schema: spec-driven
+
+context: |
+  專案：pi-agents-guard，Pi coding agent 的 TypeScript extension。
+  工具鏈：Node >=22.19.0、strict TypeScript、Vitest 5、Biome 2；Pi 0.85.1。
+  驗證入口：npm test、npm run typecheck、npm run lint；沒有 build script。
+  src/index.ts 保留公開 Runtime/RuntimeDeps/createRuntime 與 extension entry。
+  src/modules/* 是純決策；src/runtime/writer-lock.ts 擁有自身 presence、快照與提示去重。
+  docs/design.md 的 writer 章節已對齊 advisory；其他歷史設計與實作仍可能有落差，不當作驗證證據。
+  已知鎖缺口與重現證據：docs/plans/2026-09-09-writer-lock-safety-findings.md。
+  歷史抽離 checkpoint：52ae89f，258 tests 通過，不代表鎖協定安全。
+  fix-writer-lock-ownership 已實作基礎檢查與衝突提醒；writer 不阻擋寫入，其他模組政策不變。
+  實測與未驗證範圍以 change tasks/review-notes 為準；未安裝、未發布，不宣稱互斥或所有 writer 偵測。
+  此 change 不再要求 SQLite、強 ownership、工具停止證明或 Pi 宿主改版。
+  專案文件使用繁體中文（臺灣用語），保留程式識別字與工具要求的規格標記。
+  Extension state 僅可寫入 state/agents-guard/**，檔案 0600、目錄 0700。
+  測試只使用自己建立的暫存目錄／process；不得觸及真實 agent 設定或 lock。
+  同一 worktree 僅一個 writer，reviewers 唯讀；不使用廣泛暫存清理。
+  不因定點 commit 授權而推定可 push、merge、安裝或發布。
+
+rules:
+  proposal:
+    - 明列範圍、非目標，以及與原設計不同的權限、恢復與相容性行為。
+    - 區分已重現的事實、待核准的需求與尚待研究的實作選項。
+  specs:
+    - 每個 requirement 使用 SHALL 或 MUST，搭配可驗證的 WHEN/THEN scenario。
+    - 不把單一 O_EXCL、原子 rename 或 mock 成功當作跨 process 安全的保證。
+  design:
+    - 明示提示與權限的區別；不得將 session 存在記錄描述為互斥或工具停止證據。
+    - 依當前需求定案記錄格式、生命週期、觸發／去重與相容介面，不為提示功能引入強 ownership 協定。
+  tasks:
+    - 明列 exact paths、RED/GREEN/REFACTOR、驗證命令及 checkpoint 範圍。
+    - 純重構與權限／一致性行為修正分開驗收。
+
+operations:
+  apply:
+    guidance:
+      - 依六階段流程；需求、設計與 tasks 分別經使用者核准後才開始實作。
+      - CLI 的 artifact done 僅代表檔案存在，不等於使用者批准。
+      - 實作前先寫失敗測試；驗證、唯讀 review 與 findings 處置完成後才 checkpoint commit。
+  archive:
+    guidance:
+      - 先完成 review/reconciliation，再取得明確 archive 授權。

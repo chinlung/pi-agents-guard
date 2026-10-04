@@ -1,0 +1,1075 @@
+{
+	"schemaVersion": 1,
+	"publicationNote": "Public redacted copy: <USER_HOME>, <HOST>, <LAB> and <LAB_ALIAS> replace identifying environment values. Historical report hashes and file:line references describe the original pre-redaction evidence, not these published bytes; statuses and recorded test outcomes are unchanged.",
+	"kind": "sanitized selected evidence, not complete raw transcripts; excludes credentials and model thinking/signatures",
+	"sourceSha": "3df8f9d4287591de85aa8c056ee77a74501f3054",
+	"lab": "<LAB>",
+	"platform": "macOS-26.6.2-arm64-arm-64bit",
+	"darwinRelease": "25.6.0",
+	"versions": {
+		"pi": "0.85.1",
+		"pi-subagents": "0.67.0",
+		"@pi-lab/permissions": "1.0.3"
+	},
+	"nodeVersion": "v22.23.2",
+	"npmVersion": "10.9.8",
+	"permissionsPackage": {
+		"name": "@pi-lab/permissions",
+		"version": "1.0.3",
+		"peerDependencies": {
+			"@earendil-works/pi-coding-agent": ">=0.80.3 <1",
+			"@sinclair/typebox": "^0.34.49"
+		},
+		"homepage": "https://github.com/anthod0/pi-lab/tree/main/packages/permissions",
+		"resolved": "https://registry.npmjs.org/@pi-lab/permissions/-/permissions-1.0.3.tgz",
+		"integrity": "sha512-93LL7M8Uwem3TrmZdrFhubZNqP16i5R3EQutTecT6QoX2oUHQImWVAkr/jmxBYLQ48BoejJGPU5+GJP5zlCN+g=="
+	},
+	"permissionConfig": {
+		"rules": [
+			{
+				"message": "acceptance: require confirmation for broad staging",
+				"priority": 20,
+				"match": {
+					"tool": "bash",
+					"params": {
+						"command": "^git add \\.$"
+					}
+				},
+				"action": "ask"
+			},
+			{
+				"priority": 10,
+				"match": {
+					"tool": "bash",
+					"params": {
+						"command": "^git add allowed\\.txt$"
+					}
+				},
+				"action": "allow"
+			},
+			{
+				"match": {
+					"tool": "bash"
+				},
+				"action": "deny"
+			}
+		]
+	},
+	"cases": {
+		"C3-guard-first": {
+			"status": "PASS",
+			"loadOrder": [
+				"<LAB>/audit.mjs",
+				"<LAB>/source/src/index.ts",
+				"<LAB>/tooling/node_modules/@pi-lab/permissions/dist/index.mjs"
+			],
+			"tools": 2,
+			"permissionAsks": 0,
+			"dialogs": [],
+			"permissionEvents": [],
+			"outputs": [
+				"[agents-guard/hard-deny] 已阻擋：命令命中 hard-deny 清單\n  命令=git add .  命中規則=git add .\n  這是 AGENTS.md 的 MUST 級防線，不提供單次放行選項。\n  若確實需要此操作，請由操作者手動執行，或調整 agents-guard 的 hardDeny 設定。",
+				"(no output)"
+			],
+			"indexUnchanged": false,
+			"presenceAfter": [],
+			"actualTools": [
+				{
+					"tool": "bash",
+					"toolCallId": "call_y56K6o8QHoTVc7rD5H3Z5wnj|fc_06b29120125e8139016aa31acda59087d0a7e642aa8cfb1000",
+					"input": {
+						"command": "git add ."
+					},
+					"isError": true,
+					"content": [
+						{
+							"type": "text",
+							"text": "[agents-guard/hard-deny] 已阻擋：命令命中 hard-deny 清單\n  命令=git add .  命中規則=git add .\n  這是 AGENTS.md 的 MUST 級防線，不提供單次放行選項。\n  若確實需要此操作，請由操作者手動執行，或調整 agents-guard 的 hardDeny 設定。"
+						}
+					]
+				},
+				{
+					"tool": "bash",
+					"toolCallId": "call_Uk4ARwOzgRBpnHR0DnQmJcr3|fc_06b29120125e8139016aa31acfdffc87d093b68609517e7b57",
+					"input": {
+						"command": "git add allowed.txt"
+					},
+					"isError": false,
+					"content": [
+						{
+							"type": "text",
+							"text": "(no output)"
+						}
+					]
+				}
+			],
+			"stagedNames": ["allowed.txt"]
+		},
+		"C3-permissions-first": {
+			"status": "PASS",
+			"loadOrder": [
+				"<LAB>/audit.mjs",
+				"<LAB>/tooling/node_modules/@pi-lab/permissions/dist/index.mjs",
+				"<LAB>/source/src/index.ts"
+			],
+			"tools": 1,
+			"permissionAsks": 1,
+			"dialogs": [
+				{
+					"type": "extension_ui_request",
+					"id": "b711a1b3-0dc0-429a-b5df-6d609b50c6cb",
+					"method": "select",
+					"title": "⚠️  bash\n--------\n  command: git add .",
+					"options": ["Allow", "Allow always", "Deny", "Deny always"]
+				}
+			],
+			"permissionEvents": [
+				{
+					"type": "permissions:ask",
+					"pid": 63834,
+					"time": 1789074131509,
+					"payload": {
+						"toolCallId": "call_gwHuT0hTdRAmvvpuLBnYESxO|fc_0769e92184f42e39016aa31ad3ff2487d0bcb6d4fbdb153da2",
+						"toolName": "bash",
+						"rule": {
+							"action": "ask",
+							"message": "acceptance: require confirmation for broad staging",
+							"priority": 20,
+							"match": {
+								"tool": "bash",
+								"params": {
+									"command": "^git add \\.$"
+								}
+							}
+						},
+						"options": ["Allow", "Allow always", "Deny", "Deny always"]
+					}
+				},
+				{
+					"type": "permissions:user_select",
+					"pid": 63834,
+					"time": 1789074131513,
+					"payload": {
+						"toolCallId": "call_gwHuT0hTdRAmvvpuLBnYESxO|fc_0769e92184f42e39016aa31ad3ff2487d0bcb6d4fbdb153da2",
+						"toolName": "bash",
+						"selection": null,
+						"decision": "deny",
+						"cached": false,
+						"rule": {
+							"action": "ask",
+							"message": "acceptance: require confirmation for broad staging",
+							"priority": 20,
+							"match": {
+								"tool": "bash",
+								"params": {
+									"command": "^git add \\.$"
+								}
+							}
+						}
+					}
+				},
+				{
+					"type": "permissions:deny",
+					"pid": 63834,
+					"time": 1789074131514,
+					"payload": {
+						"toolCallId": "call_gwHuT0hTdRAmvvpuLBnYESxO|fc_0769e92184f42e39016aa31ad3ff2487d0bcb6d4fbdb153da2",
+						"toolName": "bash",
+						"reason": "acceptance: require confirmation for broad staging",
+						"source": "user",
+						"rule": {
+							"action": "ask",
+							"message": "acceptance: require confirmation for broad staging",
+							"priority": 20,
+							"match": {
+								"tool": "bash",
+								"params": {
+									"command": "^git add \\.$"
+								}
+							}
+						}
+					}
+				}
+			],
+			"outputs": ["acceptance: require confirmation for broad staging"],
+			"indexUnchanged": true,
+			"presenceAfter": [],
+			"actualTools": [
+				{
+					"tool": "bash",
+					"toolCallId": "call_gwHuT0hTdRAmvvpuLBnYESxO|fc_0769e92184f42e39016aa31ad3ff2487d0bcb6d4fbdb153da2",
+					"input": {
+						"command": "git add ."
+					},
+					"isError": true,
+					"content": [
+						{
+							"type": "text",
+							"text": "acceptance: require confirmation for broad staging"
+						}
+					]
+				}
+			],
+			"rpcCancellationResponses": [
+				{
+					"type": "extension_ui_response",
+					"id": "b711a1b3-0dc0-429a-b5df-6d609b50c6cb",
+					"cancelled": true
+				}
+			]
+		},
+		"C2": {
+			"status": "PASS",
+			"asyncId": "8b79a4dc-9700-4949-88a1-fa082a89f83e",
+			"childPid": 69251,
+			"childSessionId": "01a08d2b-c472-7715-b177-f3f52ef16693",
+			"file": "child.txt",
+			"content": "CHILD_OK\n",
+			"actualGuardSource": "<LAB>/source/src/index.ts",
+			"parentPresencePreserved": true,
+			"childPresenceNotObserved": true,
+			"indexUnchanged": true,
+			"parentExitCode": 0,
+			"childRunId": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+			"modelAttempts": 1,
+			"modelTurns": 2,
+			"tokens": 913,
+			"costEstimateUSD": 0.0002316,
+			"nativeTerminal": {
+				"version": 1,
+				"state": "observed",
+				"runId": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+				"runnerProcessInstanceId": "23fd56fb-b04e-428e-afc7-61953ffdb323",
+				"observedAt": 1789074855207,
+				"instances": [
+					{
+						"kind": "runner",
+						"processInstanceId": "23fd56fb-b04e-428e-afc7-61953ffdb323",
+						"closeObservedAt": 1789074855207,
+						"exitCode": 0,
+						"signal": null
+					}
+				],
+				"resumeDisposition": "resumable"
+			},
+			"workflowReceipt": {
+				"version": 1,
+				"workflowRunId": "8b79a4dc-9700-4949-88a1-fa082a89f83e",
+				"state": "complete",
+				"createdAt": 1789074854870,
+				"entries": {
+					"write-once": {
+						"key": "write-once",
+						"agent": "acceptance-child",
+						"requestedContext": "fresh",
+						"resolvedContext": "fresh",
+						"continuation": {
+							"runIds": ["de4bf8b5-4abb-4383-87c0-1f18efaf19c4"]
+						},
+						"latestRunId": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+						"resumability": {
+							"state": "resumable"
+						}
+					}
+				},
+				"workflowChildren": {
+					"version": 1,
+					"parentToolCallId": "call_feawn7P7FlEKHiJWheKlbgc2|fc_05aa8f31088c786d016aa31d9ed80487d0815c3e9426b985d3",
+					"workflowRunId": "8b79a4dc-9700-4949-88a1-fa082a89f83e",
+					"inventoryComplete": true,
+					"workflowState": "completed",
+					"children": [
+						{
+							"childId": "write-once",
+							"state": "completed",
+							"runId": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+							"agent": "acceptance-child",
+							"sessionName": "acceptance-child: In the disposable fixture cwd <LAB>",
+							"model": "openai-codex/gpt-5.6-luna:low"
+						}
+					]
+				}
+			},
+			"childCompletionCards": 0,
+			"nativeEffects": {
+				"fileMutation": {
+					"status": "not-applicable",
+					"expected": false,
+					"attempted": true,
+					"evidence": {
+						"source": "tracked-files",
+						"trackedOnly": true,
+						"changedFiles": [],
+						"attemptedMutation": false,
+						"unavailable": "Command failed: git -c core.fsmonitor=false diff --no-ext-diff --name-only -z HEAD --\nfatal: bad revision 'HEAD'\n"
+					}
+				}
+			},
+			"capabilities": {
+				"name": "acceptance-child",
+				"description": "Single-file disposable acceptance probe; native Pi, never an external CLI",
+				"source": "user",
+				"executable": true,
+				"runner": {
+					"type": "pi"
+				},
+				"tools": {
+					"ambient": false,
+					"names": ["write"],
+					"mcpDirectTools": []
+				},
+				"model": {
+					"value": "openai-codex/gpt-5.6-luna",
+					"thinking": "low"
+				},
+				"execution": {
+					"defaultAsync": true,
+					"timeoutMs": 120000
+				},
+				"extensions": {
+					"names": ["<LAB>/source/src/index.ts", "<LAB>/child-audit.mjs"]
+				}
+			},
+			"parentActualTools": [
+				{
+					"tool": "subagent",
+					"toolCallId": "call_FQPJxfWbN4NT0OVPVyS2KN4Q|fc_05aa8f31088c786d016aa31d97ae0087d08a8cc629ada5fff8",
+					"input": {
+						"action": "list",
+						"capabilities": true
+					},
+					"isError": false,
+					"content": [
+						{
+							"type": "text",
+							"text": "Executable agents (capabilities):\nUser agents\n- acceptance-child (user, context: fresh): Description: Single-file disposable acceptance probe; native Pi, never an external CLI; Tools: write; Model: openai-codex/gpt-5.6-luna; Thinking: low"
+						}
+					]
+				},
+				{
+					"tool": "subagent",
+					"toolCallId": "call_Hbhow0vMUbPKK2lmhgWnAs5z|fc_05aa8f31088c786d016aa31d99da5087d08b977ffef329193b",
+					"input": {
+						"action": "models",
+						"agent": "acceptance-child"
+					},
+					"isError": false,
+					"content": [
+						{
+							"type": "text",
+							"text": "Subagent model\n\nAgent: acceptance-child\nEffective model:\n  openai-codex/gpt-5.6-luna\nSource: user agent config\nThinking: low\nCurrent session model:\n  openai-codex/gpt-5.6-luna"
+						}
+					]
+				},
+				{
+					"tool": "subagent",
+					"toolCallId": "call_feawn7P7FlEKHiJWheKlbgc2|fc_05aa8f31088c786d016aa31d9ed80487d0815c3e9426b985d3",
+					"input": {
+						"workflowScript": "const child = await runs.run(\"write-once\", {\"label\": \"Write single fixture\", \"agent\": \"acceptance-child\", \"task\": \"In the disposable fixture cwd <LAB>/repo, branch main (unborn HEAD), call write exactly once with path child.txt and content CHILD_OK followed by a newline. No other model tool writes, reads, commands, subagents, retries, commits or pushes. The parent is idle and owns validation. On successful write reply CHILD_OK, otherwise report the exact error and stop.\", \"context\": \"fresh\", \"output\": false, \"acceptance\": {\"level\": \"none\", \"reason\": \"Disposable probe; parent verifies real file, model, session and lifecycle\"}, \"timeoutMs\": 120000}); return child;",
+						"async": true,
+						"mission": false
+					},
+					"isError": false,
+					"content": [
+						{
+							"type": "text",
+							"text": "Run fan-out: 0/1 used, 1 remaining\nAsync workflow [8b79a4dc-9700-4949-88a1-fa082a89f83e]\n\nThe async run is detached and running in the background.\nYou are in an interactive session. Return control to the user now; Pi will wake you through the native completion notification when this subagent completes or needs attention. Do not run sleep/polling loops to wait for this async subagent; it does not need a wait call.\nUse bg_wait only for provider, detached, or other background work that lacks a native completion notification.\nIf the current turn must receive results from work without a native notification before it ends, call blocking bg_wait(); ordinary async subagent runs do not need a wait call because their completion is delivered natively.\nOtherwise, continue any independent work or return control to the user. Use subagent({ action: \"status\", id: \"...\" }) for a one-shot status/result or to inspect a blocked/stale run, never as a wait loop."
+						}
+					]
+				}
+			],
+			"childJournal": [
+				{
+					"type": "session_start",
+					"pid": 69251,
+					"ppid": 69058,
+					"time": 1789074850934,
+					"sessionId": "01a08d2b-c472-7715-b177-f3f52ef16693",
+					"cwd": "<LAB>/repo",
+					"isChild": true,
+					"guardCommands": [
+						{
+							"name": "agents-guard",
+							"description": "Inspect or toggle agents-guard modules",
+							"source": "extension",
+							"sourceInfo": {
+								"path": "<LAB>/source/src/index.ts",
+								"source": "cli",
+								"scope": "temporary",
+								"origin": "top-level"
+							}
+						}
+					],
+					"guardSha256": "0762c79d0a7661e545e95a217ef63cc7f8a2b83e65651fa24051d74c06778351",
+					"presence": [
+						{
+							"version": 1,
+							"instanceId": "340756cc-67d2-4e7b-bedf-c05c5b2fb3e0",
+							"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+							"host": "<HOST>",
+							"pid": 69058,
+							"worktreeRoot": "<LAB>/repo",
+							"startedAt": 1789074837034,
+							"lastSeenAt": 1789074849287
+						}
+					]
+				},
+				{
+					"type": "tool_call",
+					"pid": 69251,
+					"ppid": 69058,
+					"time": 1789074853071,
+					"toolName": "write",
+					"toolCallId": "call_exFKvpC4zuqWxkOEWERlzX4H|fc_0e61fe1acc94971d016aa31da5187887d0aa540d278d170a99",
+					"input": {
+						"path": "<LAB>/repo/child.txt",
+						"content": "CHILD_OK\n"
+					},
+					"allowed": true,
+					"presence": [
+						{
+							"version": 1,
+							"instanceId": "340756cc-67d2-4e7b-bedf-c05c5b2fb3e0",
+							"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+							"host": "<HOST>",
+							"pid": 69058,
+							"worktreeRoot": "<LAB>/repo",
+							"startedAt": 1789074837034,
+							"lastSeenAt": 1789074851461
+						}
+					]
+				},
+				{
+					"type": "tool_result",
+					"pid": 69251,
+					"ppid": 69058,
+					"time": 1789074853079,
+					"toolName": "write",
+					"toolCallId": "call_exFKvpC4zuqWxkOEWERlzX4H|fc_0e61fe1acc94971d016aa31da5187887d0aa540d278d170a99",
+					"isError": false,
+					"content": [
+						{
+							"type": "text",
+							"text": "Successfully wrote to <LAB>/repo/child.txt"
+						}
+					],
+					"presence": [
+						{
+							"version": 1,
+							"instanceId": "340756cc-67d2-4e7b-bedf-c05c5b2fb3e0",
+							"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+							"host": "<HOST>",
+							"pid": 69058,
+							"worktreeRoot": "<LAB>/repo",
+							"startedAt": 1789074837034,
+							"lastSeenAt": 1789074851461
+						}
+					]
+				},
+				{
+					"type": "agent_settled",
+					"pid": 69251,
+					"ppid": 69058,
+					"time": 1789074854772,
+					"presence": [
+						{
+							"version": 1,
+							"instanceId": "340756cc-67d2-4e7b-bedf-c05c5b2fb3e0",
+							"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+							"host": "<HOST>",
+							"pid": 69058,
+							"worktreeRoot": "<LAB>/repo",
+							"startedAt": 1789074837034,
+							"lastSeenAt": 1789074851461
+						}
+					]
+				},
+				{
+					"type": "session_shutdown",
+					"pid": 69251,
+					"ppid": 69058,
+					"time": 1789074854775,
+					"presence": [
+						{
+							"version": 1,
+							"instanceId": "340756cc-67d2-4e7b-bedf-c05c5b2fb3e0",
+							"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+							"host": "<HOST>",
+							"pid": 69058,
+							"worktreeRoot": "<LAB>/repo",
+							"startedAt": 1789074837034,
+							"lastSeenAt": 1789074851461
+						}
+					]
+				}
+			],
+			"nativeEvents": [
+				{
+					"topic": "subagent:async-started",
+					"time": 1789074849334,
+					"keys": [
+						"lifecycleArtifactVersion",
+						"id",
+						"pid",
+						"sessionId",
+						"completionOwnerId",
+						"mode",
+						"agent",
+						"task",
+						"goal",
+						"cwd",
+						"asyncDir",
+						"sessionRoot",
+						"launchContractDigest",
+						"launchResolvedExtensions",
+						"parentWorkflowRunId",
+						"workflowKey",
+						"timeoutMs",
+						"deadlineAt",
+						"nestedRoute"
+					],
+					"selected": {
+						"id": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+						"asyncDir": "<LAB>/tmp/pi-subagents-uid-501/async-subagent-runs/de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+						"pid": 69251,
+						"agent": "acceptance-child",
+						"sessionId": "<LAB>/sessions/2026-09-10T21-13-53-491Z_01a08d2b-8053-713a-8046-3b33f6956ca8.jsonl"
+					}
+				},
+				{
+					"topic": "subagent:async-complete",
+					"time": 1789074854886,
+					"keys": [
+						"id",
+						"runId",
+						"toolCallId",
+						"agent",
+						"mode",
+						"success",
+						"state",
+						"summary",
+						"output",
+						"workflowChildren",
+						"results",
+						"workflow",
+						"workflowReceipt",
+						"asyncDir",
+						"cwd",
+						"sessionId",
+						"completionOwnerId",
+						"timestamp",
+						"durationMs",
+						"notificationDeliveredAt",
+						"triggerTurn",
+						"intercomDelivered"
+					],
+					"selected": {
+						"runId": "8b79a4dc-9700-4949-88a1-fa082a89f83e",
+						"id": "8b79a4dc-9700-4949-88a1-fa082a89f83e",
+						"asyncDir": "<LAB>/tmp/pi-subagents-uid-501/async-subagent-runs/8b79a4dc-9700-4949-88a1-fa082a89f83e",
+						"state": "complete",
+						"agent": "workflow",
+						"sessionId": "<LAB>/sessions/2026-09-10T21-13-53-491Z_01a08d2b-8053-713a-8046-3b33f6956ca8.jsonl"
+					}
+				},
+				{
+					"topic": "subagent:process-terminal",
+					"time": 1789074855210,
+					"keys": [
+						"version",
+						"state",
+						"runId",
+						"runnerProcessInstanceId",
+						"observedAt",
+						"instances",
+						"resumeDisposition"
+					],
+					"selected": {
+						"runId": "de4bf8b5-4abb-4383-87c0-1f18efaf19c4",
+						"state": "observed"
+					}
+				}
+			],
+			"nativeChildStatus": {
+				"state": "complete",
+				"runFanoutBudget": {
+					"used": 1,
+					"limit": 1,
+					"remaining": 0
+				},
+				"launchResolvedExtensions": {
+					"version": 1,
+					"source": "launch-resolved",
+					"disableAmbientExtensions": true,
+					"runtime": ["sha256:d7bd3b9757bfcba1"],
+					"configured": ["sha256:50e8aba0904e3d0d", "sha256:0b244ff01b715259"],
+					"effective": [
+						"sha256:d7bd3b9757bfcba1",
+						"sha256:50e8aba0904e3d0d",
+						"sha256:0b244ff01b715259"
+					],
+					"omitted": {
+						"runtime": 0,
+						"configured": 0,
+						"effective": 0
+					}
+				},
+				"turnCount": 2,
+				"toolCount": 1
+			}
+		}
+	},
+	"sessions": [
+		{
+			"label": "c3-guard-first",
+			"pid": 63733,
+			"sessionId": "01a08d20-a2a9-718d-b5d8-59f85600ddaa",
+			"exitCode": 0,
+			"closeMethod": "EOF",
+			"eventCounts": {
+				"extension_ui_request": 2,
+				"response": 9,
+				"agent_start": 1,
+				"turn_start": 3,
+				"message_start": 6,
+				"message_end": 6,
+				"message_update": 39,
+				"tool_execution_start": 2,
+				"tool_execution_end": 2,
+				"turn_end": 3,
+				"tool_execution_update": 1,
+				"agent_end": 1,
+				"agent_settled": 1
+			},
+			"nativeNotifications": [],
+			"assistantTextOnly": [
+				"",
+				"",
+				"First operation blocked by hard-deny policy. Second operation completed successfully."
+			],
+			"modelTurns": 3,
+			"toolCalls": 2,
+			"toolErrors": 1,
+			"usage": {
+				"input": 2311,
+				"output": 93,
+				"cacheRead": 0,
+				"cacheWrite": 0,
+				"totalTokens": 2404
+			},
+			"costEstimateUSD": 0.0005738000000000001
+		},
+		{
+			"label": "c3-permission-first",
+			"pid": 63834,
+			"sessionId": "01a08d20-c2e2-77e8-a5fe-f16a49dc9f4f",
+			"exitCode": 0,
+			"closeMethod": "EOF",
+			"eventCounts": {
+				"extension_ui_request": 3,
+				"response": 9,
+				"agent_start": 1,
+				"turn_start": 2,
+				"message_start": 4,
+				"message_end": 4,
+				"message_update": 28,
+				"tool_execution_start": 1,
+				"tool_execution_end": 1,
+				"turn_end": 2,
+				"agent_end": 1,
+				"agent_settled": 1
+			},
+			"nativeNotifications": [],
+			"assistantTextOnly": [
+				"",
+				"Blocked: `git add .` requires confirmation for broad staging."
+			],
+			"modelTurns": 2,
+			"toolCalls": 1,
+			"toolErrors": 1,
+			"usage": {
+				"input": 1326,
+				"output": 65,
+				"cacheRead": 0,
+				"cacheWrite": 0,
+				"totalTokens": 1391
+			},
+			"costEstimateUSD": 0.0003432
+		},
+		{
+			"label": "c2-parent",
+			"pid": 69058,
+			"sessionId": "01a08d2b-8053-713a-8046-3b33f6956ca8",
+			"exitCode": 0,
+			"closeMethod": "EOF",
+			"eventCounts": {
+				"extension_ui_request": 22,
+				"response": 14,
+				"agent_start": 3,
+				"turn_start": 7,
+				"message_start": 14,
+				"message_end": 14,
+				"message_update": 273,
+				"tool_execution_start": 3,
+				"tool_execution_end": 3,
+				"turn_end": 7,
+				"agent_end": 3,
+				"agent_settled": 3
+			},
+			"nativeNotifications": [
+				"subagent-incremental-child-notify",
+				"subagent-notify"
+			],
+			"assistantTextOnly": [
+				"",
+				"",
+				"Completed both listed operations successfully.",
+				"",
+				"WAITING",
+				"Child **write-once** completed successfully. The workflow remains marked as running.",
+				"Workflow completed successfully. Child output: `CHILD_OK`."
+			],
+			"modelTurns": 7,
+			"toolCalls": 3,
+			"toolErrors": 0,
+			"usage": {
+				"input": 8467,
+				"output": 397,
+				"cacheRead": 21504,
+				"cacheWrite": 0,
+				"totalTokens": 30368
+			},
+			"costEstimateUSD": 0.00259988
+		},
+		{
+			"label": "acceptance-child",
+			"pid": 69251,
+			"sessionId": "01a08d2b-c472-7715-b177-f3f52ef16693",
+			"exitCode": 0,
+			"modelAttempts": [
+				{
+					"model": "openai-codex/gpt-5.6-luna:low",
+					"success": true,
+					"exitCode": 0,
+					"usage": {
+						"input": 864,
+						"output": 49,
+						"cacheRead": 0,
+						"cacheWrite": 0,
+						"cost": 0.0002316,
+						"turns": 2
+					}
+				}
+			],
+			"assistantTextOnly": ["", "CHILD_OK"],
+			"modelTurns": 2,
+			"toolCalls": 1,
+			"toolErrors": 0,
+			"usage": {
+				"input": 864,
+				"output": 49,
+				"cacheRead": 0,
+				"cacheWrite": 0,
+				"totalTokens": 913
+			},
+			"costEstimateUSD": 0.0002316
+		}
+	],
+	"totals": {
+		"modelTurns": 14,
+		"toolCalls": 7,
+		"toolErrors": 2,
+		"costEstimateUSD": 0.00374848,
+		"usage": {
+			"input": 12968,
+			"output": 604,
+			"cacheRead": 21504,
+			"cacheWrite": 0,
+			"totalTokens": 35076
+		},
+		"operatorModelPrompts": 4,
+		"nativeChildTasks": 1,
+		"nativeParentFollowupTurns": 2
+	},
+	"audit": {
+		"processRecords": [
+			{
+				"label": "api-doc-search",
+				"pid": 61189,
+				"pgid": 61189,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 1.151
+			},
+			{
+				"label": "archive",
+				"pid": 61184,
+				"pgid": 61184,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.021
+			},
+			{
+				"label": "auth-help",
+				"pid": 61764,
+				"pgid": 61764,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.182
+			},
+			{
+				"label": "auth-ready",
+				"pid": 63731,
+				"pgid": 63731,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.202
+			},
+			{
+				"label": "c2-before-status",
+				"pid": 66209,
+				"pgid": 66209,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.013
+			},
+			{
+				"label": "c2-driver",
+				"pid": 69057,
+				"pgid": 69057,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 26.414
+			},
+			{
+				"label": "c2-parent",
+				"pid": 69058,
+				"pgid": 69058,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 26.371,
+				"closeMethod": "EOF"
+			},
+			{
+				"label": "c3-guard-first",
+				"pid": 63733,
+				"pgid": 63733,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 8.242,
+				"closeMethod": "EOF"
+			},
+			{
+				"label": "c3-permission-first",
+				"pid": 63834,
+				"pgid": 63834,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 3.645,
+				"closeMethod": "EOF"
+			},
+			{
+				"label": "fixture-init",
+				"pid": 61765,
+				"pgid": 61765,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.02
+			},
+			{
+				"label": "lint",
+				"pid": 74111,
+				"pgid": 74111,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 1.459
+			},
+			{
+				"label": "node-version",
+				"pid": 61185,
+				"pgid": 61185,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.039
+			},
+			{
+				"label": "npm-version",
+				"pid": 61186,
+				"pgid": 61186,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.186
+			},
+			{
+				"label": "permission-driver",
+				"pid": 63732,
+				"pgid": 63732,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 11.995
+			},
+			{
+				"label": "permission-staged-names",
+				"pid": 63833,
+				"pgid": 63833,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.025
+			},
+			{
+				"label": "pi-help",
+				"pid": 61759,
+				"pgid": 61759,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.233
+			},
+			{
+				"label": "pi-version",
+				"pid": 61732,
+				"pgid": 61732,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.726
+			},
+			{
+				"label": "source-final-archive",
+				"pid": 76486,
+				"pgid": 76486,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 0.022
+			},
+			{
+				"label": "source-install",
+				"pid": 61197,
+				"pgid": 61197,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 3.793
+			},
+			{
+				"label": "test",
+				"pid": 74122,
+				"pgid": 74122,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 2.092
+			},
+			{
+				"label": "tooling-install",
+				"pid": 61271,
+				"pgid": 61271,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 10.102
+			},
+			{
+				"label": "typecheck",
+				"pid": 74086,
+				"pgid": 74086,
+				"exitCode": 0,
+				"groupAlive": false,
+				"durationSeconds": 1.905
+			}
+		],
+		"childPidAbsent": true,
+		"childGroupAbsent": true,
+		"presenceRecords": 0,
+		"stateModes": {
+			"state/agents-guard": "0o700",
+			"state/agents-guard/config.json": "0o600",
+			"state/agents-guard/presence": "0o700",
+			"state/agents-guard/presence/a2d3d6577e1b925732332bf59f0feefe2e96936ea79538dd19badaaa33e3c2f9": "0o700"
+		},
+		"sourceFilesUnchanged": 87,
+		"priorReportsUnchanged": {
+			"docs/reports/2026-09-11-functional-acceptance-evidence.json": "8b50e3bb5d82a3d20b00dfc0a073f994df7f65b946ec03176dc51f9ce9c63c80",
+			"docs/reports/2026-09-11-functional-acceptance-results.md": "3ba0d2cdc97774a1cd1d80420da6b8905d1b94a232e2bc1a4bfdc9129bef1673",
+			"docs/reports/2026-09-11-isolated-acceptance-results.md": "351ee9efa7ff53ef71330d71d611530ff2602fbf1c6ab4160d5e3ca8e83865a7",
+			"docs/reports/2026-09-11-model-acceptance-blocked.md": "963b9e1bd6752134ed44d6ccd369cd67cb75d06460c89dc13e67ac78b7cb2015",
+			"docs/reports/2026-09-11-oauth-connection-retry.md": "062e42d215183f1237a14a539fbd9fc6401f736d65933d4c29ee2b28460b91a3"
+		},
+		"credentialCleanup": {
+			"snapshotRemoved": true,
+			"filesScanned": 2611,
+			"tokenInArtifacts": false,
+			"realAuthStatUnchanged": true
+		},
+		"regression": {
+			"typecheck": 0,
+			"lint": 0,
+			"test": 0,
+			"testFiles": 18,
+			"tests": 411,
+			"sourceLspFiles": 2,
+			"sourceLspDiagnostics": 0
+		},
+		"cleanup": {
+			"status": "complete",
+			"removedAt": "2026-09-11T05:44:43+08:00",
+			"removedBytesEstimate": 631089693,
+			"aliasesAbsent": ["<LAB_ALIAS>", "<LAB>"],
+			"remainingLabProcesses": 0,
+			"sourceFilesVerified": 87,
+			"priorReportsVerified": 5,
+			"realAuthStatUnchanged": true,
+			"originalNodeModulesAbsent": true
+		},
+		"documentChecks": {
+			"markdownRendered": true,
+			"parsedTables": 2,
+			"relativeLinksVerified": 3,
+			"jsonAggregationVerified": true,
+			"rpcCancellationIdentityVerified": true,
+			"lensBlockingErrors": 0,
+			"lensHints": "Initial diagnostic query had two spelling hints inside authentic tool-call IDs; IDs preserved unchanged"
+		},
+		"aggregationNegativeControl": "PASS: incorrect tool total rejected",
+		"lspCleanup": {
+			"reason": "LSP service created by this batch; source cwd and exact group membership verified",
+			"initialCheck": "FAILED: three TypeScript helpers still referenced LAB",
+			"firstStopAttempt": "No signal sent: Python kqueue context-manager TypeError; corrected cleanup helper only",
+			"pgid": 73850,
+			"processes": [
+				{
+					"pid": 73850,
+					"ppid": 91783,
+					"pgid": 73850,
+					"command": "/nix/store/7cvylnf8wf3r89hb983binvjb142sgkd-nodejs-24.19.0/bin/node /nix/store/aqdrqqzp9ga247malbpsnvhyjpcnqxwz-typescript-language-server-5.3.0/lib/node_modules/typescript-language-server/lib/cli.mjs --stdio"
+				},
+				{
+					"pid": 73891,
+					"ppid": 73850,
+					"pgid": 73850,
+					"command": "/nix/store/r8aiprpyml1kxbkdf4zs8ji7faxrsbdb-nodejs-slim-24.19.0/bin/node <LAB_ALIAS>/source/node_modules/typescript/lib/tsserver.js --serverMode partialSemantic --useInferredProjectPerProjectRoot --disableAutomaticTypingAcquisition --cancellationPipeName <TMP_ROOT_2>/tscancellation* --locale en --validateDefaultNpmLocation --useNodeIpc"
+				},
+				{
+					"pid": 73892,
+					"ppid": 73850,
+					"pgid": 73850,
+					"command": "/nix/store/r8aiprpyml1kxbkdf4zs8ji7faxrsbdb-nodejs-slim-24.19.0/bin/node <LAB_ALIAS>/source/node_modules/typescript/lib/tsserver.js --useInferredProjectPerProjectRoot --cancellationPipeName <TMP_ROOT_1>/tscancellation* --locale en --validateDefaultNpmLocation --useNodeIpc"
+				},
+				{
+					"pid": 73893,
+					"ppid": 73892,
+					"pgid": 73850,
+					"command": "/nix/store/r8aiprpyml1kxbkdf4zs8ji7faxrsbdb-nodejs-slim-24.19.0/bin/node <LAB>/source/node_modules/typescript/lib/typingsInstaller.js --globalTypingsCacheLocation <USER_HOME>/Library/Caches/typescript/5.9 --typesMapLocation <LAB>/source/node_modules/typescript/lib/typesMap.json --validateDefaultNpmLocation"
+				}
+			],
+			"signal": "SIGTERM",
+			"kernelExitObserved": [73850, 73891, 73892, 73893],
+			"cwd": "<LAB>/source",
+			"runtimeNode": "24.19.0 (diagnostics service only; tested Pi/npm runtime 22.23.2)",
+			"pidsAbsent": true,
+			"groupAbsent": true
+		}
+	},
+	"notRun": [
+		"Permissions persistent approval/cache and malformed-config behavior",
+		"Permission prompts forwarded from children",
+		"Production auto-discovery/load ordering and installation",
+		"TUI, other OS, exact Node 22.19.0, crash/cancellation/race coverage",
+		"Subagent review/model-downgrade negative policy probes and full dependency security audit"
+	]
+}
